@@ -443,6 +443,10 @@ class _BaseRidge(six.with_metaclass(ABCMeta, LinearModel)):
             K = self._get_kernel(X, self.X_fit_)
             return np.dot(K, self.dual_coef_)
 
+    @property
+    def _pairwise(self):
+        return self.kernel == 'precomputed'
+
 
 class _BaseRidgeClassifier(LinearClassifierMixin):
 
